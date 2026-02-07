@@ -1,0 +1,807 @@
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ pwd
+/home/mohammedalshehhi/tt-metal
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ ls -ld .git ttnn/examples/lab_eltwise_binary
+drwxrwxr-x 9 mohammedalshehhi mohammedalshehhi 4096 Feb  6 10:56 .git
+drwxrwxr-x 3 mohammedalshehhi mohammedalshehhi 4096 Feb  6 10:44 ttnn/examples/lab_eltwise_binary
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ ./build/ttnn/examples/example_lab_eltwise_binary 2>&1 | tee /tmp/eltwise_before.log
+2026-02-06 11:28:04.190 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:28:04.190 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:28:04.200 | info     |          Device | Opening user mode device driver (tt_cluster.cpp:222)
+2026-02-06 11:28:04.217 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:28:04.217 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:28:04.289 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:28:04.289 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:28:04.297 | info     |             UMD | Harvesting masks for chip 2 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:28:04.354 | info     |             UMD | Harvesting masks for chip 1 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:28:04.370 | info     |             UMD | Harvesting masks for chip 3 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:28:04.385 | info     |             UMD | Harvesting masks for chip 0 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:28:04.401 | info     |             UMD | Opening local chip ids/PCIe ids: {0, 1, 2, 3}/[1, 2, 3, 0] and remote chip ids {} (cluster.cpp:183)
+2026-02-06 11:28:04.401 | info     |             UMD | IOMMU: disabled (cluster.cpp:158)
+2026-02-06 11:28:04.401 | info     |             UMD | KMD version: 2.6.0 (cluster.cpp:161)
+2026-02-06 11:28:04.404 | info     |             UMD | Starting devices in cluster (cluster.cpp:969)
+2026-02-06 11:28:04.405 | info     |             UMD | Mapped hugepage 0x200000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:04.406 | info     |             UMD | Mapped hugepage 0x180000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:04.407 | info     |             UMD | Mapped hugepage 0x140000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:04.409 | info     |             UMD | Mapped hugepage 0x1c0000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:05.366 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_context.cpp:936)
+2026-02-06 11:28:05.366 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_context.cpp:913)
+2026-02-06 11:28:05.366 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:28:05.366 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:28:05.448 | warning  |           Metal | Opening subset of mmio devices slows down UMD read/write to remote chips. If opening more devices, consider using CreateDevices API. (device_manager.cpp:301)
+2026-02-06 11:28:05.583 | info     |          Always | Output vector of size 409600 (lab_eltwise_binary.cpp:336)
+2026-02-06 11:28:05.586 | info     |          Always | Test Passed (lab_eltwise_binary.cpp:365)
+2026-02-06 11:28:05.615 | info     |          Device | Closing user mode device drivers (tt_cluster.cpp:471)
+2026-02-06 11:28:05.615 | info     |             UMD | Closing devices in cluster (cluster.cpp:980)
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ tail -n 20 /tmp/eltwise_before.log
+2026-02-06 11:28:04.354 | info     |             UMD | Harvesting masks for chip 1 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:28:04.370 | info     |             UMD | Harvesting masks for chip 3 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:28:04.385 | info     |             UMD | Harvesting masks for chip 0 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:28:04.401 | info     |             UMD | Opening local chip ids/PCIe ids: {0, 1, 2, 3}/[1, 2, 3, 0] and remote chip ids {} (cluster.cpp:183)
+2026-02-06 11:28:04.401 | info     |             UMD | IOMMU: disabled (cluster.cpp:158)
+2026-02-06 11:28:04.401 | info     |             UMD | KMD version: 2.6.0 (cluster.cpp:161)
+2026-02-06 11:28:04.404 | info     |             UMD | Starting devices in cluster (cluster.cpp:969)
+2026-02-06 11:28:04.405 | info     |             UMD | Mapped hugepage 0x200000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:04.406 | info     |             UMD | Mapped hugepage 0x180000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:04.407 | info     |             UMD | Mapped hugepage 0x140000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:04.409 | info     |             UMD | Mapped hugepage 0x1c0000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:28:05.366 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_context.cpp:936)
+2026-02-06 11:28:05.366 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_context.cpp:913)
+2026-02-06 11:28:05.366 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:28:05.366 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:28:05.448 | warning  |           Metal | Opening subset of mmio devices slows down UMD read/write to remote chips. If opening more devices, consider using CreateDevices API. (device_manager.cpp:301)
+2026-02-06 11:28:05.583 | info     |          Always | Output vector of size 409600 (lab_eltwise_binary.cpp:336)
+2026-02-06 11:28:05.586 | info     |          Always | Test Passed (lab_eltwise_binary.cpp:365)
+2026-02-06 11:28:05.615 | info     |          Device | Closing user mode device drivers (tt_cluster.cpp:471)
+2026-02-06 11:28:05.615 | info     |             UMD | Closing devices in cluster (cluster.cpp:980)
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ git add -A
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ git commit -m "checkpoint before introducing synthetic error" || true
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mohammedalshehhi@tt-blackhole-01.(none)')
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ git config --global user.name "Bin_Yahmoor"
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ git config --global user.email "mohammed.yahmoor@hotmail.com"
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ 
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ git commit -m "checkpoint before introducing synthetic error" || true
+[INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
+[INFO] Initializing environment for https://github.com/psf/black-pre-commit-mirror.
+[INFO] Initializing environment for https://github.com/PyCQA/autoflake.
+[INFO] Initializing environment for https://github.com/pycqa/isort.
+[INFO] Initializing environment for https://github.com/BlankSpruce/gersemi.
+[INFO] Initializing environment for https://github.com/adrienverge/yamllint.git.
+[INFO] Initializing environment for https://github.com/pre-commit/mirrors-clang-format.
+[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/psf/black-pre-commit-mirror.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/PyCQA/autoflake.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/pycqa/isort.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/BlankSpruce/gersemi.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/adrienverge/yamllint.git.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+[INFO] Installing environment for https://github.com/pre-commit/mirrors-clang-format.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+Trim Trailing Whitespace......................................(no files to check)Skipped
+Fix End of Files..............................................(no files to check)Skipped
+Check Yaml....................................................(no files to check)Skipped
+Check for added large files...................................(no files to check)Skipped
+black.........................................................(no files to check)Skipped
+autoflake.....................................................(no files to check)Skipped
+isort.........................................................(no files to check)Skipped
+gersemi.......................................................(no files to check)Skipped
+yamllint......................................................(no files to check)Skipped
+clang-format..................................................(no files to check)Skipped
+validate-metalium-includes....................................(no files to check)Skipped
+validate-metalium-deprecation.................................(no files to check)Skipped
+Verify that there is no global torch import in ttnn...........(no files to check)Skipped
+Prevent edits to frozen pybind11 sources under ttnn...........(no files to check)Skipped
+Convert .ipynb to .py for ttnn basic examples.................(no files to check)Skipped
+Detect legacy device operation classes in newly added files...(no files to check)Skipped
+Validate golden bandwidth CSV column headers..................(no files to check)Skipped
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ erl -0777 -pe 's/;// if $. == 1; print' ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp > /tmp/read_tiles_broken.cpp
+Command 'erl' not found, but can be installed with:
+snap install erlang       # version 25.3, or
+apt  install erlang-base  # version 1:24.2.1+dfsg-1ubuntu0.6
+See 'snap info erlang' for additional versions.
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ mv /tmp/read_tiles_broken.cpp ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ git --no-pager diff -- ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp | sed -n '1,120p'
+diff --git a/ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp b/ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp
+index a677ff8538..e69de29bb2 100644
+--- a/ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp
++++ b/ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp
+@@ -1,67 +0,0 @@
+-// SPDX-FileCopyrightText: © 2026 Tenstorrent AI ULC
+-//
+-// SPDX-License-Identifier: Apache-2.0
+-
+-#include <cstdint>
+-#include "api/dataflow/dataflow_api.h"
+-
+-void kernel_main() {
+-    // Read parameters from the kernel's runtime arguments.
+-    int arg_idx = 0;
+-    uint32_t in0_base_addr = get_arg_val<uint32_t>(arg_idx++);
+-    uint32_t in1_base_addr = get_arg_val<uint32_t>(arg_idx++);
+-    uint32_t n_tiles = get_arg_val<uint32_t>(arg_idx++);
+-
+-    // The circular buffers to read the tiles into
+-    constexpr tt::CBIndex cb_in0 = tt::CBIndex::c_0;
+-    constexpr tt::CBIndex cb_in1 = tt::CBIndex::c_1;
+-
+-    // Get the tile size used in the circular buffers. We assume the
+-    // circular buffers are created with the same tile size as the DRAM
+-    // buffers (which is most often the case).
+-    constexpr uint32_t tile_size_bytes = get_tile_size(cb_in0);
+-
+-    // Create address generators for the input buffers. Address generators can determine
+-    // physical address based on the provided data layout and base address.
+-    // Start by extracting the tensor layout parameters from the compile-time arguments.
+-    // Recall that compile-time arguments are stored as a vector of uint32_t values.
+-    // TensorAccessorArgs is a clean way to extract the appropriate number of
+-    // these uint32_t values and store them in an object.
+-    constexpr auto in0_layout_args = TensorAccessorArgs<0>();
+-    // Then, construct the address generator for the input buffer.
+-    // Observe that here we are just constructing the address generator object, but not using it yet.
+-    // It will be used in the loop below to determine the address to read the tiles from.
+-    const auto in0_addr_gen = TensorAccessor(in0_layout_args, in0_base_addr, tile_size_bytes);
+-    // Repeat for the second input buffer. next_compile_time_args_offset() is a clean way to
+-    // determine the index of the next compile-time argument (after TensorAccessorArgs read
+-    // the number of arguments it required above) without having to hard-code the index.
+-    constexpr auto in1_layout_args = TensorAccessorArgs<in0_layout_args.next_compile_time_args_offset()>();
+-    // Finally, construct the address generator for the second input buffer.
+-    const auto in1_addr_gen = TensorAccessor(in1_layout_args, in1_base_addr, tile_size_bytes);
+-
+-    // Loop over all the tiles and read them into the circular buffers.
+-    for (uint32_t i = 0; i < n_tiles; i++) {
+-        // First make sure there is space for one tile in each of the circular buffers to be written to.
+-        // Deciding how large the buffers should be is a tradeoff.
+-        // These are blocking calls.
+-        cb_reserve_back(cb_in0, 1);
+-        cb_reserve_back(cb_in1, 1);
+-
+-        uint32_t cb_in0_addr = get_write_ptr(cb_in0);
+-        uint32_t cb_in1_addr = get_write_ptr(cb_in1);
+-        // Read the tiles from DRAM into the circular buffers.
+-        // Recall that in0_addr_gen and in1_addr_gen are address generators for the input buffers.
+-        // They are used to determine the address to read the tiles from. i is the index of the tile to read.
+-        // cb_in0_addr and cb_in1_addr are the circular buffer addresses to write the tiles to.
+-        // These are non-blocking calls, so they both proceed in parallel.
+-        noc_async_read_tile(i, in0_addr_gen, cb_in0_addr);
+-        noc_async_read_tile(i, in1_addr_gen, cb_in1_addr);
+-
+-        // Wait until both reads are done before signaling the circular buffers that the tiles are ready.
+-        noc_async_read_barrier();
+-        // Mark the tiles in circular buffers as ready.
+-        // After this, any kernel (e.g. compute kernel) calling `cb_wait_front` will see this tile.
+-        cb_push_back(cb_in0, 1);
+-        cb_push_back(cb_in1, 1);
+-    }
+-}
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ sed -n '1,120p' ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ ./build_metal.sh 2>&1 | tee /tmp/build_after_break.log
+tail -n 40 /tmp/build_after_break.log
+INFO: Export compile commands: OFF
+INFO: Enable ccache: OFF
+INFO: Build type: Release
+INFO: Enable time trace: OFF
+INFO: Build directory: build_Release
+INFO: Install Prefix: build_Release
+INFO: Build tests: OFF
+INFO: Enable Unity builds: ON
+INFO: TTNN Shared sub libs : OFF
+INFO: Enable Light Metal Trace: ON
+INFO: Enable Distributed: ON
+INFO: With python bindings: ON
+INFO: Enable Tracy: ON
+INFO: Enable LTO: OFF
+INFO: CMAKE_TOOLCHAIN_FILE: cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake
+INFO: Configuring Project
+INFO: Running: cmake -B build_Release -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=build_Release -DCMAKE_EXPORT_COMPILE_COMMANDS=OFF -DTT_UNITY_BUILDS=ON -DTT_ENABLE_LIGHT_METAL_TRACE=ON -DTT_ENABLE_LIGHT_METAL_TRACE=ON -DWITH_PYTHON_BINDINGS=ON -DPython3_EXECUTABLE=/home/mohammedalshehhi/tt-metal/python_env/bin/python3 -DPython3_INCLUDE_DIR=/home/mohammedalshehhi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/include/python3.10 -DPython3_LIBRARY=/home/mohammedalshehhi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/libpython3.10.so -DENABLE_DISTRIBUTED=ON -DENABLE_FAKE_KERNELS_TARGET=OFF -DCMAKE_TOOLCHAIN_FILE=cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake
+-- Version: 0.67.0-dev20260206+5.a24917aab4+m
+-- Metalium version: 0.67.0
+-- Build type: Release
+-- CMAKE_TOOLCHAIN_FILE: cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake
+-- Building with Python Bindings: nanobind
+-- Checking compilers
+-- Using zlib compressed debug sections
+-- Linker type: LLD
+-- Linker supports --gdb-index, enabling for Debug builds
+-- ENABLE_LIBCXX: FALSE
+-- Build shared libs: ON
+-- Build Python bindings: ON
+-- Build Programming Examples: OFF
+-- Build TT METAL Tests: OFF
+-- Build TTNN Tests: OFF
+-- Build with Unity builds: ON
+-- Build with LTO: OFF
+-- Build with Shared TTNN Sublibraries: OFF
+-- Build with LightMetal Trace Enabled: ON
+-- Build with Multihost Distributed Compute: ON
+-- Boost: Release build, static libraries, MPI OFF, Python OFF, testing OFF
+-- Boost: libraries included: core;container;smart_ptr;interprocess;asio;lockfree
+-- Boost.Context: architecture x86_64, binary format elf, ABI sysv, assembler gas, suffix .S, implementation fcontext
+-- CPM: Adding package Boost@1.86.0 (1.86.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/boost/1359e136761ab2d10afa1c4e21086c8d824735cd)
+CMake Deprecation Warning at .cpmcache/protobuf/a651e28d952ec45c2f344e35c8ca6e56d66bd342/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- CPM: Adding package protobuf@21.12 (v21.12 at /home/mohammedalshehhi/tt-metal/.cpmcache/protobuf/a651e28d952ec45c2f344e35c8ca6e56d66bd342)
+-- CPM: Adding package yaml-cpp@0 (2f86d13775d119edbb69af52e5f566fd65c6953b at /home/mohammedalshehhi/tt-metal/.cpmcache/yaml-cpp/0_8_0_upstream_patched)
+CMake Deprecation Warning at .cpmcache/googletest/96129d89f45386492ae46d6bb8c027bc3df5f949/CMakeLists.txt:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at .cpmcache/googletest/96129d89f45386492ae46d6bb8c027bc3df5f949/googlemock/CMakeLists.txt:39 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at .cpmcache/googletest/96129d89f45386492ae46d6bb8c027bc3df5f949/googletest/CMakeLists.txt:49 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Found Python: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter
+-- CPM: Adding package googletest@1.13.0 (v1.13.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/googletest/96129d89f45386492ae46d6bb8c027bc3df5f949)
+-- CPM: Adding package reflect@1.2.6 (v1.2.6 at /home/mohammedalshehhi/tt-metal/.cpmcache/reflect/f93e77475670eaeacf332927dfe8b50e3f3812e0)
+-- CPM: Adding package enchantum@0 (8ca5b0eb7e7ebe0252e5bc6915083f1dd1b8294e at /home/mohammedalshehhi/tt-metal/.cpmcache/enchantum/2fb7ab238e36c101b9848892ddb6382276b65837)
+-- CPM: Adding package fmt@11.1.4 (11.1.4 at /home/mohammedalshehhi/tt-metal/.cpmcache/fmt/69912fb6b71fcb1f7e5deca191a2bb4748c4e7b6)
+-- CPM: Adding package range-v3@0.12.0 (0.12.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/range-v3/0_12_0_patched)
+-- CPM: Adding package nanobind@0 (c5a3a378aa61d104c82ca053cb1e367782cd3618 at /home/mohammedalshehhi/tt-metal/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79)
+-- CPM: Adding package nlohmann_json@3.11.3 (v3.11.3 at /home/mohammedalshehhi/tt-metal/.cpmcache/nlohmann_json/798e0374658476027d9723eeb67a262d0f3c8308)
+-- CPM: Adding package xtl@0.8.0 (0.8.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/xtl/0_8_0_patched)
+-- CPM: Adding package xtensor@0.26.0 (0.26.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/xtensor/0_26_0_patched)
+-- CPM: Adding package xtensor-blas@0.22.0 (0.22.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/xtensor-blas/0_22_0_patched)
+-- CPM: Adding package benchmark@1.9.1 (v1.9.1 at /home/mohammedalshehhi/tt-metal/.cpmcache/benchmark/17a125dc196d0eea81711f65879e8410dd54303f)
+-- CPM: Adding package Taskflow@3.7.0 (v3.7.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/taskflow/52063f60902bfeb362fa4616b1394ab5efe30994)
+-- Proceeding with version: 24.3.25.0
+-- CMAKE_CXX_FLAGS: 
+-- CPM: Adding package flatbuffers@24.3.25 (v24.3.25 at /home/mohammedalshehhi/tt-metal/.cpmcache/flatbuffers/2c4062bffa52fa4157b1b4deeae73395df475fda)
+-- CPM: Adding package simd-everywhere@0.8.2 (v0.8.2 at /home/mohammedalshehhi/tt-metal/.cpmcache/simd-everywhere/b3b426f78574ef837b17f42e86bab88314c5e4db)
+-- CPM: Adding package spdlog@1.15.2 (v1.15.2 at /home/mohammedalshehhi/tt-metal/.cpmcache/spdlog/b1c2586bb5c35a7929362e87f62433eb68206873)
+-- CPM: Adding package tt-logger@1.1.7 (v1.1.7 at /home/mohammedalshehhi/tt-metal/.cpmcache/tt-logger/87c1a5f2e9d2dd011200eb49c86426c26dec719e)
+-- CPM: Adding package capnproto@0 (d135c9ca5e15219eaf131dfce1a41afdbaea9aab at /home/mohammedalshehhi/tt-metal/.cpmcache/capnproto/bd4aa3355d617afa314dd35ae4f7ddf60680b11d)
+-- CMake version: 4.2.3
+-- UMD build type: Release
+-- CPM: Adding package nanomsg@1.8.0 (v1.8.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/nanomsg/28cc32d5bdb6a858fe53b3ccf7e923957e53eada)
+INFOCPM Added flatbuffers, creating ALIAS flatbuffers::flatbuffers
+-- CPM: Adding package libuv@1.51.0 (v1.51.0 at /home/mohammedalshehhi/tt-metal/.cpmcache/libuv/2b05484ccff8fdf26b363fb50e4830b774d7eb53)
+-- CPM: Adding package cxxopts@0 (dbf4c6a66816f6c3872b46cc6af119ad227e04e1 at /home/mohammedalshehhi/tt-metal/.cpmcache/cxxopts/dda70ad5c1afdb5368541192bace55dbcd7872e3)
+CMake Warning at .cpmcache/cpm/CPM_0.40.2.cmake:317 (message):
+  CPM: Requires a newer version of nanobind (2.10.2) than currently included
+  (0).
+Call Stack (most recent call first):
+  .cpmcache/cpm/CPM_0.40.2.cmake:682 (cpm_check_if_package_already_added)
+  tt_metal/third_party/umd/third_party/CMakeLists.txt:158 (CPMAddPackage)
+
+
+-- CPM: Adding package picosha2@1.0.1 (v1.0.1 at /home/mohammedalshehhi/tt-metal/.cpmcache/picosha2/c5737937b9b264d5f413bff750447403d1603c55)
+-- CPM: Adding package umd_asio@ (asio-1-30-2 at /home/mohammedalshehhi/tt-metal/.cpmcache/umd_asio/83a029aeca9a00050695989a093d0cc1fcd67ba8)
+-- Building umd with Simulation
+-- Building device library as SHARED
+-- Building umd with Tools
+Parsing public/common/TracyVersion.hpp file
+VERSION 0.10.0
+-- TRACY_ENABLE: ON
+-- TRACY_ON_DEMAND: OFF
+-- TRACY_CALLSTACK: OFF
+-- TRACY_NO_CALLSTACK: OFF
+-- TRACY_NO_CALLSTACK_INLINES: OFF
+-- TRACY_ONLY_LOCALHOST: OFF
+-- TRACY_NO_BROADCAST: OFF
+-- TRACY_ONLY_IPV4: OFF
+-- TRACY_NO_CODE_TRANSFER: OFF
+-- TRACY_NO_CONTEXT_SWITCH: OFF
+-- TRACY_NO_EXIT: OFF
+-- TRACY_NO_SAMPLING: OFF
+-- TRACY_NO_VERIFY: OFF
+-- TRACY_NO_VSYNC_CAPTURE: OFF
+-- TRACY_NO_FRAME_IMAGE: OFF
+-- TRACY_NO_SYSTEM_TRACING: OFF
+-- TRACY_PATCHABLE_NOPSLEDS: OFF
+-- TRACY_DELAYED_INIT: OFF
+-- TRACY_MANUAL_LIFETIME: OFF
+-- TRACY_FIBERS: OFF
+-- TRACY_NO_CRASH_HANDLER: OFF
+-- TRACY_TIMER_FALLBACK: ON
+-- TRACY_LIBUNWIND_BACKTRACE: OFF
+-- TRACY_SYMBOL_OFFLINE_RESOLVE: OFF
+-- TRACY_LIBBACKTRACE_ELF_DYNLOAD_SUPPORT: OFF
+-- Adding -Wno-unused-variable to TracyClient
+-- Using SFPI compiler: /home/mohammedalshehhi/tt-metal/runtime/sfpi/compiler/bin/riscv-tt-elf-g++ (tenstorrent/sfpi:7.22.0[229]) 15.1.0
+-- TT_METAL_INSTALL_ROOT == /usr/libexec/tt-metalium
+-- Using ULFM MPI from /opt/openmpi-v5.0.7-ulfm
+-- Found Python3: /home/mohammedalshehhi/tt-metal/python_env/bin/python3 (found version "3.10.19") found components: Interpreter Development.Module Development.SABIModule
+-- Python3 include dirs: /home/mohammedalshehhi/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/include/python3.10
+-- Configuring done (2.7s)
+-- Generating done (0.8s)
+-- Build files have been written to: /home/mohammedalshehhi/tt-metal/build_Release
+INFO: Building Project
+[0/2] Re-checking globbed directories...
+[1/57] Generating RPC stub for /home/mohammedalshehhi/tt-metal/tt_metal/impl/debug/inspector/rpc.capnp
+Cannot generate stub file for Inspector. If you need python autocomplete/static analysis, install with: pip install pycapnp
+[2/57] Linking CXX shared library tt_metal/libtt_metal.so
+[3/57] Linking CXX executable tools/scaleout/run_cluster_validation
+[4/57] Linking CXX executable tools/scaleout/run_fabric_manager
+[5/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/nb_ft.cpp.o
+[6/57] Linking CXX executable tools/scaleout/generate_mgd
+[7/57] Linking CXX executable tools/lightmetal_runner
+[8/57] Linking CXX executable tools/watcher_dump
+[9/57] Linking CXX executable tools/mem_bench
+[10/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/implicit.cpp.o
+[11/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/trampoline.cpp.o
+[12/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/nb_static_property.cpp.o
+[13/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/error.cpp.o
+[14/57] Linking CXX shared library ttnn/_ttnncpp.so
+[15/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/nb_ndarray.cpp.o
+[16/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/common.cpp.o
+[17/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/nb_internals.cpp.o
+[18/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/nb_func.cpp.o
+[19/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/nb_enum.cpp.o
+[20/57] Building CXX object ttnn/CMakeFiles/nanobind-static-abi3.dir/__/.cpmcache/nanobind/8be24e8fbbe8c9cee0b8c553c21d090a5ede3d79/src/nb_type.cpp.o
+[21/57] Linking CXX static library ttnn/libnanobind-static-abi3.a
+[22/57] Linking CXX executable ttnn/examples/example_add
+[23/57] Linking CXX executable ttnn/examples/example_lab_eltwise_binary
+[24/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_31_cxx.cxx.o
+[25/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_17_cxx.cxx.o
+[26/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_15_cxx.cxx.o
+[27/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_26_cxx.cxx.o
+[28/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_30_cxx.cxx.o
+[29/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_16_cxx.cxx.o
+[30/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_13_cxx.cxx.o
+[31/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_10_cxx.cxx.o
+[32/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_21_cxx.cxx.o
+[33/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_9_cxx.cxx.o
+[34/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_12_cxx.cxx.o
+[35/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_11_cxx.cxx.o
+[36/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_2_cxx.cxx.o
+[37/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_20_cxx.cxx.o
+[38/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_3_cxx.cxx.o
+[39/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_19_cxx.cxx.o
+[40/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_4_cxx.cxx.o
+[41/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_18_cxx.cxx.o
+[42/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_1_cxx.cxx.o
+[43/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_8_cxx.cxx.o
+[44/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_29_cxx.cxx.o
+[45/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_24_cxx.cxx.o
+[46/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_28_cxx.cxx.o
+[47/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_27_cxx.cxx.o
+[48/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_23_cxx.cxx.o
+[49/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_14_cxx.cxx.o
+[50/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_22_cxx.cxx.o
+[51/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_0_cxx.cxx.o
+[52/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_7_cxx.cxx.o
+[53/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_5_cxx.cxx.o
+[54/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_25_cxx.cxx.o
+[55/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_6_cxx.cxx.o
+[56/57] Linking CXX shared library ttnn/_ttnn.so
+[56/57] Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/include/xtensor.hpp
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/lib/libtt_metal.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/build_Release/lib/libtt_metal.so" to "/opt/openmpi-v5.0.7-ulfm/lib:/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN"
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnncpp.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnncpp.so" to "/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN/build/lib:$ORIGIN"
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnn.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnn.so" to "/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN/build/lib:$ORIGIN"
+-- Installing: /home/mohammedalshehhi/tt-metal/ttnn/ttnn/_ttnn.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/ttnn/ttnn/_ttnn.so" to "/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN/build/lib:$ORIGIN"
+[28/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_30_cxx.cxx.o
+[29/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_16_cxx.cxx.o
+[30/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_13_cxx.cxx.o
+[31/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_10_cxx.cxx.o
+[32/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_21_cxx.cxx.o
+[33/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_9_cxx.cxx.o
+[34/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_12_cxx.cxx.o
+[35/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_11_cxx.cxx.o
+[36/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_2_cxx.cxx.o
+[37/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_20_cxx.cxx.o
+[38/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_3_cxx.cxx.o
+[39/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_19_cxx.cxx.o
+[40/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_4_cxx.cxx.o
+[41/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_18_cxx.cxx.o
+[42/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_1_cxx.cxx.o
+[43/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_8_cxx.cxx.o
+[44/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_29_cxx.cxx.o
+[45/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_24_cxx.cxx.o
+[46/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_28_cxx.cxx.o
+[47/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_27_cxx.cxx.o
+[48/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_23_cxx.cxx.o
+[49/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_14_cxx.cxx.o
+[50/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_22_cxx.cxx.o
+[51/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_0_cxx.cxx.o
+[52/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_7_cxx.cxx.o
+[53/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_5_cxx.cxx.o
+[54/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_25_cxx.cxx.o
+[55/57] Building CXX object ttnn/CMakeFiles/ttnn.dir/Unity/unity_6_cxx.cxx.o
+[56/57] Linking CXX shared library ttnn/_ttnn.so
+[56/57] Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/include/xtensor.hpp
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/lib/libtt_metal.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/build_Release/lib/libtt_metal.so" to "/opt/openmpi-v5.0.7-ulfm/lib:/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN"
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnncpp.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnncpp.so" to "/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN/build/lib:$ORIGIN"
+-- Installing: /home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnn.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/build_Release/lib/_ttnn.so" to "/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN/build/lib:$ORIGIN"
+-- Installing: /home/mohammedalshehhi/tt-metal/ttnn/ttnn/_ttnn.so
+-- Set non-toolchain portion of runtime path of "/home/mohammedalshehhi/tt-metal/ttnn/ttnn/_ttnn.so" to "/home/mohammedalshehhi/tt-metal/build_Release/lib:$ORIGIN/build/lib:$ORIGIN"
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ ./build/ttnn/examples/example_lab_eltwise_binary 2>&1 | tee /tmp/eltwise_jit_error.log
+2026-02-06 11:40:39.559 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:40:39.559 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:40:39.569 | info     |          Device | Opening user mode device driver (tt_cluster.cpp:222)
+2026-02-06 11:40:39.586 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:40:39.586 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:40:39.658 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:40:39.658 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:40:39.666 | info     |             UMD | Harvesting masks for chip 2 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:40:39.726 | info     |             UMD | Harvesting masks for chip 1 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:40:39.741 | info     |             UMD | Harvesting masks for chip 3 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:40:39.757 | info     |             UMD | Harvesting masks for chip 0 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:40:39.772 | info     |             UMD | Opening local chip ids/PCIe ids: {0, 1, 2, 3}/[1, 2, 3, 0] and remote chip ids {} (cluster.cpp:183)
+2026-02-06 11:40:39.772 | info     |             UMD | IOMMU: disabled (cluster.cpp:158)
+2026-02-06 11:40:39.772 | info     |             UMD | KMD version: 2.6.0 (cluster.cpp:161)
+2026-02-06 11:40:39.775 | info     |             UMD | Starting devices in cluster (cluster.cpp:969)
+2026-02-06 11:40:39.776 | info     |             UMD | Mapped hugepage 0x200000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:40:39.777 | info     |             UMD | Mapped hugepage 0x180000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:40:39.779 | info     |             UMD | Mapped hugepage 0x140000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:40:39.780 | info     |             UMD | Mapped hugepage 0x1c0000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:40:40.746 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_context.cpp:936)
+2026-02-06 11:40:40.746 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_context.cpp:913)
+2026-02-06 11:40:40.746 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:40:40.747 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:40:40.829 | warning  |           Metal | Opening subset of mmio devices slows down UMD read/write to remote chips. If opening more devices, consider using CreateDevices API. (device_manager.cpp:301)
+2026-02-06 11:40:41.354 | error    |    BuildKernels | brisc compile failure -- cmd: cd /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/ && /home/mohammedalshehhi/tt-metal/runtime/sfpi/compiler/bin/riscv-tt-elf-g++ -O2 -std=c++17 -flto=auto -ffast-math -fno-exceptions -g -MMD -fno-use-cxa-atexit -Wall -Werror -Wno-unknown-pragmas -Wno-deprecated-declarations -Wno-error=multistatement-macros -Wno-error=parentheses -Wno-error=unused-but-set-variable -Wno-unused-variable -Wno-unused-function -mcpu=tt-bh -fno-tree-loop-distribute-patterns -I. -I.. -I/home/mohammedalshehhi/tt-metal/ -I/home/mohammedalshehhi/tt-metal/ttnn -I/home/mohammedalshehhi/tt-metal/ttnn/cpp -I/home/mohammedalshehhi/tt-metal/tt_metal -I/home/mohammedalshehhi/tt-metal/tt_metal/include -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc -I/home/mohammedalshehhi/tt-metal/tt_metal/hostdevcommon/api -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/debug -I/home/mohammedalshehhi/tt-metal/tt_metal/api/ -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/ckernels/blackhole/metal/common -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/ckernels/blackhole/metal/llk_io -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx/blackhole -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx/blackhole/blackhole_defines -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx/blackhole/noc -I/home/mohammedalshehhi/tt-metal/tt_metal/third_party/tt_llk/tt_llk_blackhole/common/inc -I/home/mohammedalshehhi/tt-metal/tt_metal/third_party/tt_llk/tt_llk_blackhole/llk_lib -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx -I/home/mohammedalshehhi/tt-metal/ttnn/examples/lab_eltwise_binary/kernels/dataflow -c -o /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.12112047551116931853.o /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc -MF /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.12112047551116931853.d -DIS_NOT_POW2_NUM_L1_BANKS=1 -DLOG_BASE_2_OF_NUM_DRAM_BANKS=3 -DNUM_DRAM_BANKS=8 -DNUM_L1_BANKS=130 -DPCIE_NOC_X=19 -DPCIE_NOC_Y=24 -DTENSIX_FIRMWARE -DLOCAL_MEM_EN=0 -DPROCESSOR_INDEX=0 -DCOMPILE_FOR_BRISC -DARCH_BLACKHOLE -DDISPATCH_MESSAGE_ADDR=4290184248 -DKERNEL_BUILD -DNOC_INDEX='0' -DNOC_MODE='0' -DKERNEL_COMPILE_TIME_ARGS=2,2  (build.cpp:52)
+2026-02-06 11:40:41.354 | critical |          Always | TT_THROW: brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+   80 |         kernel_main();
+      |         ^~~~~~~~~~~
+ (assert.hpp:104)
+2026-02-06 11:40:41.358 | error    |    BuildKernels | Failed to rename temporary file /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.12112047551116931853.o to target file /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.o: No such file or directory (jit_build_utils.cpp:82)
+2026-02-06 11:40:41.358 | critical |          Always | TT_THROW: Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+info:
+brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+   80 |         kernel_main();
+      |         ^~~~~~~~~~~
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/ttnn/_ttnncpp.so(+0x1f0ec28) [0x737e94b0ec28]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x79940c) [0x737e9259940c]
+ --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+ (assert.hpp:104)
+2026-02-06 11:40:41.362 | error    |          Always | Test failed with exception! (lab_eltwise_binary.cpp:358)
+2026-02-06 11:40:41.362 | error    |          Always | TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/impl/program/program.cpp:156: tt::exception
+info:
+Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+info:
+brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+   80 |         kernel_main();
+      |         ^~~~~~~~~~~
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/ttnn/_ttnncpp.so(+0x1f0ec28) [0x737e94b0ec28]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x79940c) [0x737e9259940c]
+ --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x661328) [0x737e92461328]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x628cb0) [0x737e92428cb0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+ (lab_eltwise_binary.cpp:359)
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/impl/program/program.cpp:156: tt::exception
+info:
+Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+info:
+brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+   80 |         kernel_main();
+      |         ^~~~~~~~~~~
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/ttnn/_ttnncpp.so(+0x1f0ec28) [0x737e94b0ec28]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x79940c) [0x737e9259940c]
+ --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x661328) [0x737e92461328]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x628cb0) [0x737e92428cb0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+
+[tt-blackhole-01:385836] *** Process received signal ***
+[tt-blackhole-01:385836] Signal: Aborted (6)
+[tt-blackhole-01:385836] Signal code:  (-6)
+[tt-blackhole-01:385836] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x42520)[0x737e91042520]
+[tt-blackhole-01:385836] [ 1] /lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x12c)[0x737e910969fc]
+[tt-blackhole-01:385836] [ 2] /lib/x86_64-linux-gnu/libc.so.6(raise+0x16)[0x737e91042476]
+[tt-blackhole-01:385836] [ 3] /lib/x86_64-linux-gnu/libc.so.6(abort+0xd3)[0x737e910287f3]
+[tt-blackhole-01:385836] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xa2b9e)[0x737e914a2b9e]
+[tt-blackhole-01:385836] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xae20c)[0x737e914ae20c]
+[tt-blackhole-01:385836] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xae277)[0x737e914ae277]
+[tt-blackhole-01:385836] [ 7] /lib/x86_64-linux-gnu/libstdc++.so.6(__cxa_rethrow+0x4b)[0x737e914ae52b]
+[tt-blackhole-01:385836] [ 8] ./build/ttnn/examples/example_lab_eltwise_binary(main+0x1703)[0x610e24c529b3]
+[tt-blackhole-01:385836] [ 9] /lib/x86_64-linux-gnu/libc.so.6(+0x29d90)[0x737e91029d90]
+[tt-blackhole-01:385836] [10] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80)[0x737e91029e40]
+[tt-blackhole-01:385836] [11] ./build/ttnn/examples/example_lab_eltwise_binary(_start+0x25)[0x610e24c4f575]
+[tt-blackhole-01:385836] *** End of error message ***
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ grep -n -E "JIT|jit|compile|compilation|error|failed|read_tiles|kernel" /tmp/eltwise_jit_error.log || true
+tail -n 120 /tmp/eltwise_jit_error.log
+25:2026-02-06 11:40:41.354 | error    |    BuildKernels | brisc compile failure -- cmd: cd /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/ && /home/mohammedalshehhi/tt-metal/runtime/sfpi/compiler/bin/riscv-tt-elf-g++ -O2 -std=c++17 -flto=auto -ffast-math -fno-exceptions -g -MMD -fno-use-cxa-atexit -Wall -Werror -Wno-unknown-pragmas -Wno-deprecated-declarations -Wno-error=multistatement-macros -Wno-error=parentheses -Wno-error=unused-but-set-variable -Wno-unused-variable -Wno-unused-function -mcpu=tt-bh -fno-tree-loop-distribute-patterns -I. -I.. -I/home/mohammedalshehhi/tt-metal/ -I/home/mohammedalshehhi/tt-metal/ttnn -I/home/mohammedalshehhi/tt-metal/ttnn/cpp -I/home/mohammedalshehhi/tt-metal/tt_metal -I/home/mohammedalshehhi/tt-metal/tt_metal/include -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc -I/home/mohammedalshehhi/tt-metal/tt_metal/hostdevcommon/api -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/debug -I/home/mohammedalshehhi/tt-metal/tt_metal/api/ -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/ckernels/blackhole/metal/common -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/ckernels/blackhole/metal/llk_io -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx/blackhole -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx/blackhole/blackhole_defines -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/inc/internal/tt-1xx/blackhole/noc -I/home/mohammedalshehhi/tt-metal/tt_metal/third_party/tt_llk/tt_llk_blackhole/common/inc -I/home/mohammedalshehhi/tt-metal/tt_metal/third_party/tt_llk/tt_llk_blackhole/llk_lib -I/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx -I/home/mohammedalshehhi/tt-metal/ttnn/examples/lab_eltwise_binary/kernels/dataflow -c -o /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.12112047551116931853.o /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc -MF /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.12112047551116931853.d -DIS_NOT_POW2_NUM_L1_BANKS=1 -DLOG_BASE_2_OF_NUM_DRAM_BANKS=3 -DNUM_DRAM_BANKS=8 -DNUM_L1_BANKS=130 -DPCIE_NOC_X=19 -DPCIE_NOC_Y=24 -DTENSIX_FIRMWARE -DLOCAL_MEM_EN=0 -DPROCESSOR_INDEX=0 -DCOMPILE_FOR_BRISC -DARCH_BLACKHOLE -DDISPATCH_MESSAGE_ADDR=4290184248 -DKERNEL_BUILD -DNOC_INDEX='0' -DNOC_MODE='0' -DKERNEL_COMPILE_TIME_ARGS=2,2  (build.cpp:52)
+26:2026-02-06 11:40:41.354 | critical |          Always | TT_THROW: brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+27:/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+28:   80 |         kernel_main();
+31:2026-02-06 11:40:41.358 | error    |    BuildKernels | Failed to rename temporary file /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.12112047551116931853.o to target file /home/mohammedalshehhi/.cache/tt-metal-cache/a24917aab4/6679966354375388793/kernels/read_tiles/11730107836777213248/brisc/brisck.o: No such file or directory (jit_build_utils.cpp:82)
+32:2026-02-06 11:40:41.358 | critical |          Always | TT_THROW: Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+34:brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+35:/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+36:   80 |         kernel_main();
+42: --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+56:2026-02-06 11:40:41.362 | error    |          Always | Test failed with exception! (lab_eltwise_binary.cpp:358)
+57:2026-02-06 11:40:41.362 | error    |          Always | TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/impl/program/program.cpp:156: tt::exception
+59:Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+61:brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+62:/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+63:   80 |         kernel_main();
+69: --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+99:terminate called after throwing an instance of 'std::runtime_error'
+102:Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+104:brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+105:/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+106:   80 |         kernel_main();
+112: --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+157:[tt-blackhole-01:385836] *** End of error message ***
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/ttnn/_ttnncpp.so(+0x1f0ec28) [0x737e94b0ec28]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x79940c) [0x737e9259940c]
+ --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+ (assert.hpp:104)
+2026-02-06 11:40:41.362 | error    |          Always | Test failed with exception! (lab_eltwise_binary.cpp:358)
+2026-02-06 11:40:41.362 | error    |          Always | TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/impl/program/program.cpp:156: tt::exception
+info:
+Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+info:
+brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+   80 |         kernel_main();
+      |         ^~~~~~~~~~~
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/ttnn/_ttnncpp.so(+0x1f0ec28) [0x737e94b0ec28]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x79940c) [0x737e9259940c]
+ --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x661328) [0x737e92461328]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x628cb0) [0x737e92428cb0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+ (lab_eltwise_binary.cpp:359)
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/impl/program/program.cpp:156: tt::exception
+info:
+Failed to generate binaries for read_tiles TT_THROW @ /home/mohammedalshehhi/tt-metal/tt_metal/jit_build/build.cpp:56: tt::exception
+info:
+brisc build failed. Log: /home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc: In function 'uint32_t _start()':
+/home/mohammedalshehhi/tt-metal/tt_metal/hw/firmware/src/tt-1xx/brisck.cc:80:9: error: 'kernel_main' was not declared in this scope
+   80 |         kernel_main();
+      |         ^~~~~~~~~~~
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/ttnn/_ttnncpp.so(+0x1f0ec28) [0x737e94b0ec28]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x79940c) [0x737e9259940c]
+ --- tt::tt_metal::JitBuildState::compile_one(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tt::tt_metal::JitBuildSettings const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+
+backtrace:
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x661328) [0x737e92461328]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x628cb0) [0x737e92428cb0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b06b8) [0x737e925b06b8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b063e) [0x737e925b063e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e9df) [0x737e9232e9df]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x737e91099ee8]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x52e839) [0x737e9232e839]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x7b048e) [0x737e925b048e]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74fcd5) [0x737e9254fcd5]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74e7e0) [0x737e9254e7e0]
+ --- /home/mohammedalshehhi/tt-metal/build_Release/tt_metal/libtt_metal.so(+0x74dcc8) [0x737e9254dcc8]
+ --- /lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x737e914dc253]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x737e91094ac3]
+ --- /lib/x86_64-linux-gnu/libc.so.6(+0x1268d0) [0x737e911268d0]
+
+[tt-blackhole-01:385836] *** Process received signal ***
+[tt-blackhole-01:385836] Signal: Aborted (6)
+[tt-blackhole-01:385836] Signal code:  (-6)
+[tt-blackhole-01:385836] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x42520)[0x737e91042520]
+[tt-blackhole-01:385836] [ 1] /lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x12c)[0x737e910969fc]
+[tt-blackhole-01:385836] [ 2] /lib/x86_64-linux-gnu/libc.so.6(raise+0x16)[0x737e91042476]
+[tt-blackhole-01:385836] [ 3] /lib/x86_64-linux-gnu/libc.so.6(abort+0xd3)[0x737e910287f3]
+[tt-blackhole-01:385836] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xa2b9e)[0x737e914a2b9e]
+[tt-blackhole-01:385836] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xae20c)[0x737e914ae20c]
+[tt-blackhole-01:385836] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xae277)[0x737e914ae277]
+[tt-blackhole-01:385836] [ 7] /lib/x86_64-linux-gnu/libstdc++.so.6(__cxa_rethrow+0x4b)[0x737e914ae52b]
+[tt-blackhole-01:385836] [ 8] ./build/ttnn/examples/example_lab_eltwise_binary(main+0x1703)[0x610e24c529b3]
+[tt-blackhole-01:385836] [ 9] /lib/x86_64-linux-gnu/libc.so.6(+0x29d90)[0x737e91029d90]
+[tt-blackhole-01:385836] [10] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80)[0x737e91029e40]
+[tt-blackhole-01:385836] [11] ./build/ttnn/examples/example_lab_eltwise_binary(_start+0x25)[0x610e24c4f575]
+[tt-blackhole-01:385836] *** End of error message ***
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ git checkout -- ttnn/examples/lab_eltwise_binary/kernels/dataflow/read_tiles.cpp
+git status --porcelain
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ ./build/ttnn/examples/example_lab_eltwise_binary 2>&1 | tee /tmp/eltwise_after_fix.log
+grep -n "Test Passed" /tmp/eltwise_after_fix.log || tail -n 60 /tmp/eltwise_after_fix.log
+2026-02-06 11:43:18.831 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:43:18.831 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:43:18.841 | info     |          Device | Opening user mode device driver (tt_cluster.cpp:222)
+2026-02-06 11:43:18.857 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:43:18.857 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:43:18.928 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 11:43:18.928 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 11:43:18.937 | info     |             UMD | Harvesting masks for chip 2 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:43:18.993 | info     |             UMD | Harvesting masks for chip 1 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:43:19.009 | info     |             UMD | Harvesting masks for chip 3 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:43:19.024 | info     |             UMD | Harvesting masks for chip 0 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 11:43:19.040 | info     |             UMD | Opening local chip ids/PCIe ids: {0, 1, 2, 3}/[1, 2, 3, 0] and remote chip ids {} (cluster.cpp:183)
+2026-02-06 11:43:19.040 | info     |             UMD | IOMMU: disabled (cluster.cpp:158)
+2026-02-06 11:43:19.040 | info     |             UMD | KMD version: 2.6.0 (cluster.cpp:161)
+2026-02-06 11:43:19.043 | info     |             UMD | Starting devices in cluster (cluster.cpp:969)
+2026-02-06 11:43:19.044 | info     |             UMD | Mapped hugepage 0x200000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:43:19.045 | info     |             UMD | Mapped hugepage 0x180000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:43:19.046 | info     |             UMD | Mapped hugepage 0x140000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:43:19.048 | info     |             UMD | Mapped hugepage 0x1c0000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 11:43:19.691 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_context.cpp:936)
+2026-02-06 11:43:19.691 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_context.cpp:913)
+2026-02-06 11:43:19.692 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:43:19.692 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 11:43:19.784 | warning  |           Metal | Opening subset of mmio devices slows down UMD read/write to remote chips. If opening more devices, consider using CreateDevices API. (device_manager.cpp:301)
+2026-02-06 11:43:19.900 | info     |          Always | Output vector of size 409600 (lab_eltwise_binary.cpp:336)
+2026-02-06 11:43:19.902 | info     |          Always | Test Passed (lab_eltwise_binary.cpp:365)
+2026-02-06 11:43:19.931 | info     |          Device | Closing user mode device drivers (tt_cluster.cpp:471)
+2026-02-06 11:43:19.931 | info     |             UMD | Closing devices in cluster (cluster.cpp:980)
+26:2026-02-06 11:43:19.902 | info     |          Always | Test Passed (lab_eltwise_binary.cpp:365)
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ 

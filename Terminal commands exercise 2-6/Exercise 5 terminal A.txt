@@ -1,0 +1,77 @@
+mohammedalshehhi@tt-blackhole-01:~/tt-metal$ nano ttnn/examples/lab_eltwise_binary/lab_eltwise_binary.cpp
+mohammedalshehhi@tt-blackhole-01:~/tt-metal$ source python_env/bin/activate
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ nano ttnn/examples/lab_eltwise_binary/kernels/compute/tiles_add.cpp
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ grep -n "cb_pop_front" -n ttnn/examples/lab_eltwise_binary/kernels/compute/tiles_add.cpp
+60:        //                                                                                                cb_pop_front(cb_in0, 1);
+61:        // 												  cb_pop_front(cb_in1, 1);
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ 
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ ./build/ttnn/examples/example_lab_eltwise_binary
+2026-02-06 13:15:37.964 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 13:15:37.964 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 13:15:37.974 | info     |          Device | Opening user mode device driver (tt_cluster.cpp:222)
+2026-02-06 13:15:37.990 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 13:15:37.990 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 13:15:38.061 | info     |             UMD | Established firmware bundle version: 19.4.2 (topology_discovery.cpp:400)
+2026-02-06 13:15:38.061 | info     |             UMD | Firmware bundle version 19.4.2 on the system is newer than the latest fully tested version 19.4.0 for blackhole architecture. Newest features may not be supported. (topology_discovery.cpp:426)
+2026-02-06 13:15:38.070 | info     |             UMD | Harvesting masks for chip 2 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 13:15:38.129 | info     |             UMD | Harvesting masks for chip 1 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 13:15:38.144 | info     |             UMD | Harvesting masks for chip 3 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 13:15:38.159 | info     |             UMD | Harvesting masks for chip 0 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 13:15:38.175 | info     |             UMD | Opening local chip ids/PCIe ids: {0, 1, 2, 3}/[1, 2, 3, 0] and remote chip ids {} (cluster.cpp:183)
+2026-02-06 13:15:38.175 | info     |             UMD | IOMMU: disabled (cluster.cpp:158)
+2026-02-06 13:15:38.175 | info     |             UMD | KMD version: 2.6.0 (cluster.cpp:161)
+2026-02-06 13:15:38.178 | info     |             UMD | Starting devices in cluster (cluster.cpp:969)
+2026-02-06 13:15:38.179 | info     |             UMD | Mapped hugepage 0x200000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:15:38.180 | info     |             UMD | Mapped hugepage 0x180000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:15:38.181 | info     |             UMD | Mapped hugepage 0x140000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:15:38.183 | info     |             UMD | Mapped hugepage 0x1c0000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:15:39.056 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_context.cpp:936)
+2026-02-06 13:15:39.056 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_context.cpp:913)
+2026-02-06 13:15:39.057 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 13:15:39.057 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 13:15:39.080 | info     |           Metal | DPRINT enabled on device 0, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:15:39.082 | info     |           Metal | DPRINT Server attached device 0 (dprint_server.cpp:498)
+2026-02-06 13:15:39.082 | info     |           Metal | DPRINT enabled on device 1, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:15:39.084 | info     |           Metal | DPRINT Server attached device 1 (dprint_server.cpp:498)
+2026-02-06 13:15:39.084 | info     |           Metal | DPRINT enabled on device 2, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:15:39.087 | info     |           Metal | DPRINT Server attached device 2 (dprint_server.cpp:498)
+2026-02-06 13:15:39.087 | info     |           Metal | DPRINT enabled on device 3, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:15:39.091 | info     |           Metal | DPRINT Server attached device 3 (dprint_server.cpp:498)
+2026-02-06 13:15:39.169 | warning  |           Metal | Opening subset of mmio devices slows down UMD read/write to remote chips. If opening more devices, consider using CreateDevices API. (device_manager.cpp:301)
+^C
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ nano ttnn/examples/lab_eltwise_binary/kernels/compute/tiles_add.cpp
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ grep -n "cb_pop_front" ttnn/examples/lab_eltwise_binary/kernels/compute/tiles_add.cpp
+60:                                                                                                        cb_pop_front(cb_in0, 1);
+61:        												  cb_pop_front(cb_in1, 1);
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ ./build/ttnn/examples/example_lab_eltwise_binary | tail -n 30
+2026-02-06 13:30:16.465 | info     |             UMD | Harvesting masks for chip 0 tensix: 0x0 dram: 0x0 eth: 0x120 pcie: 0x2 l2cpu: 0x0 (cluster.cpp:336)
+2026-02-06 13:30:16.480 | info     |             UMD | Opening local chip ids/PCIe ids: {0, 1, 2, 3}/[1, 2, 3, 0] and remote chip ids {} (cluster.cpp:183)
+2026-02-06 13:30:16.480 | info     |             UMD | IOMMU: disabled (cluster.cpp:158)
+2026-02-06 13:30:16.480 | info     |             UMD | KMD version: 2.6.0 (cluster.cpp:161)
+2026-02-06 13:30:16.484 | info     |             UMD | Starting devices in cluster (cluster.cpp:969)
+2026-02-06 13:30:16.484 | info     |             UMD | Mapped hugepage 0x200000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:30:16.486 | info     |             UMD | Mapped hugepage 0x180000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:30:16.487 | info     |             UMD | Mapped hugepage 0x140000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:30:16.488 | info     |             UMD | Mapped hugepage 0x1c0000000 to NOC address 0x1000000000000000 (silicon_sysmem_manager.cpp:208)
+2026-02-06 13:30:17.153 | info     |     Distributed | Using auto discovery to generate mesh graph. (metal_context.cpp:936)
+2026-02-06 13:30:17.153 | info     |     Distributed | Constructing control plane using auto-discovery (no mesh graph descriptor). (metal_context.cpp:913)
+2026-02-06 13:30:17.153 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 13:30:17.153 | info     |          Fabric | TopologyMapper mapping start (mesh=0): n_log=4, n_phys=4, log_deg_hist={2:4}, phys_deg_hist={2:4} (topology_mapper_utils.cpp:171)
+2026-02-06 13:30:17.180 | info     |           Metal | DPRINT enabled on device 0, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:30:17.182 | info     |           Metal | DPRINT Server attached device 0 (dprint_server.cpp:498)
+2026-02-06 13:30:17.182 | info     |           Metal | DPRINT enabled on device 1, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:30:17.184 | info     |           Metal | DPRINT Server attached device 1 (dprint_server.cpp:498)
+2026-02-06 13:30:17.184 | info     |           Metal | DPRINT enabled on device 2, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:30:17.187 | info     |           Metal | DPRINT Server attached device 2 (dprint_server.cpp:498)
+2026-02-06 13:30:17.187 | info     |           Metal | DPRINT enabled on device 3, all worker cores. (dprint_server.cpp:394)
+2026-02-06 13:30:17.191 | info     |           Metal | DPRINT Server attached device 3 (dprint_server.cpp:498)
+2026-02-06 13:30:17.296 | warning  |           Metal | Opening subset of mmio devices slows down UMD read/write to remote chips. If opening more devices, consider using CreateDevices API. (device_manager.cpp:301)
+2026-02-06 13:30:18.563 | info     |          Always | Output vector of size 409600 (lab_eltwise_binary.cpp:336)
+2026-02-06 13:30:18.572 | info     |          Always | Test Passed (lab_eltwise_binary.cpp:365)
+2026-02-06 13:30:18.583 | info     |           Metal | DPRINT Server detached device 0 (dprint_server.cpp:586)
+2026-02-06 13:30:18.593 | info     |           Metal | DPRINT Server detached device 1 (dprint_server.cpp:586)
+2026-02-06 13:30:18.600 | info     |           Metal | DPRINT Server detached device 2 (dprint_server.cpp:586)
+2026-02-06 13:30:18.607 | info     |           Metal | DPRINT Server detached device 3 (dprint_server.cpp:586)
+2026-02-06 13:30:18.643 | info     |          Device | Closing user mode device drivers (tt_cluster.cpp:471)
+2026-02-06 13:30:18.643 | info     |             UMD | Closing devices in cluster (cluster.cpp:980)
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ 

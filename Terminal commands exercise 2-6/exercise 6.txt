@@ -1,0 +1,59 @@
+Last login: Fri Feb  6 13:44:28 on ttys006
+You have new mail.
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Mohammeds-MacBook-Pro-6:tt-metal mohammedyahmoor$ mohammedalshehhi@10.127.30.197
+-bash: mohammedalshehhi@10.127.30.197: command not found
+Mohammeds-MacBook-Pro-6:tt-metal mohammedyahmoor$ mohammedalshehhi@10.127.30.197
+-bash: mohammedalshehhi@10.127.30.197: command not found
+Mohammeds-MacBook-Pro-6:tt-metal mohammedyahmoor$ ssh mohammedalshehhi@10.127.30.197
+mohammedalshehhi@10.127.30.197's password: 
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-94-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+17 updates can be applied immediately.
+13 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+10 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '24.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+*** System restart required ***
+Last login: Fri Feb  6 13:38:35 2026 from 10.127.8.76
+mohammedalshehhi@tt-blackhole-01:~$ cd tt-metal/
+mohammedalshehhi@tt-blackhole-01:~/tt-metal$ source python_env/bin/activate
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ less generated/profiler/.logs/profile_log_device.csv
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ less generated/profiler/.logs/profile_log_device.csv
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ awk -F',' 'NR>2 {print $6}' generated/profiler/.logs/profile_log_device.csv | sort -n | head -1
+2923247801189
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ awk -F',' 'NR>2 {print $6}' generated/profiler/.logs/profile_log_device.csv | sort -n | tail -1
+2923248059215
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ python - << 'PY'
+MIN = 2923247801189
+MAX = 2923248059215
+FREQ_MHZ = 1350
+
+elapsed_cycles = MAX - MIN
+elapsed_seconds = elapsed_cycles / (FREQ_MHZ * 1e6)
+
+print("elapsed_cycles =", elapsed_cycles)
+print("firmware_time_seconds =", elapsed_seconds)
+print("firmware_time_ms =", elapsed_seconds * 1e3)
+PY
+elapsed_cycles = 258026
+firmware_time_seconds = 0.00019113037037037038
+firmware_time_ms = 0.19113037037037037
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ unset TT_METAL_DEVICE_PROFILER
+(python_env) mohammedalshehhi@tt-blackhole-01:~/tt-metal$ 
