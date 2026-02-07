@@ -1,5 +1,5 @@
 Assignment 1 – Single-Core Matrix Multiplication
-
+i do no know how to make the tree show properly click edit to see things properly the directry tree
 This repository contains implementations and results for multiple exercises related to single-core matrix multiplication and terminal command usage.
 
 Repository Structure
